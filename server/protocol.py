@@ -1,11 +1,16 @@
 from datetime import datetime
 
+'''
+В данном скрипте прописываем возможные варианты ответа сервера (код + сообщение)
+'''
 
-def validate_request(request):
+
+
+def validate_request(request): # проверим что все поля не пустые
     return 'action' in request and 'time' in request and request.get('action') and request.get('time')
 
 
-def make_response(request, code, data=None, date=datetime.now()):
+def make_response(request, code, data=None, date=datetime.now()): # прописываем формат респонза от сервера
     return {
         'action': request.get('action'),
         'time': date.timestamp(),

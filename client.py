@@ -1,11 +1,11 @@
-import yaml
+import yaml 
 import json
 import socket
 from datetime import datetime
 from argparse import ArgumentParser
 
 
-def make_request(action, text, date=datetime.now()):
+def make_request(action, text, date=datetime.now()): #добавим в запрос action, чтобы уточнить цель запроса + время запроса
     return {
         'action': action,
         'data': text,
@@ -30,10 +30,10 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    if args.config:
+    if args.config: # если в ком строку был передан адрес файла конфиг, то
         with open(args.config) as file:
             file_config = yaml.safe_load(file)
-            config.update(file_config or {})
+            config.update(file_config or {}) #если в файле ничего нет, то config.udate({}) оставит всё как и было
 
     host = args.host if args.host else config.get('host')
     port = args.port if args.port else config.get('port')

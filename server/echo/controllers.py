@@ -1,4 +1,4 @@
-from protocol import make_200
+from protocol import make_200 # созданный нами протокол
 
 
 def echo_controller(request):
