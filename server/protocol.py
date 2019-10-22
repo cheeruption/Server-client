@@ -13,7 +13,7 @@ def validate_request(request): # проверим что все поля не п
 def make_response(request, code, data=None, date=datetime.now()): # прописываем формат респонза от сервера
     return {
         'action': request.get('action'),
-        'time': date.timestamp(),
+        'time': date.timestamp() if isinstance(date, datetime) else date, #isinstance(obj, classinfo) __???__
         'code': code,
         'data': data
     }
